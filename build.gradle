@@ -26,6 +26,8 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.hateoas:spring-hateoas")
+    compile('org.springframework.data:spring-data-jpa:1.8.0.RELEASE')
+    compile(":model")
 
     testCompile("junit:junit")
 }

@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.hibernate:hibernate-entitymanager:4.3.7.Final'
+    compile 'hsqldb:hsqldb:1.8.0.10'
+    compile 'org.springframework.data:spring-data-jpa:1.8.0.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
