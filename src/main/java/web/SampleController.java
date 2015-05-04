@@ -6,7 +6,6 @@ import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import model.dao.DogRepository;
 import model.entities.Dog;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+
 
 @RestController
 public class SampleController {
     @Autowired
     private DogRepository dogRepository;
+    @Autowired
+    private DogAssembler dogAssembler;
 
     @RequestMapping(value = "/", produces = {"application/json"})
     @Transactional
@@ -37,8 +38,6 @@ public class SampleController {
             list.add(d);
         }
         dogRepository.save(list);
-        Resource<Wrapper> resource = new Resource<>(new Wrapper(dogRepository.findAll()));
-        resource.add(linkTo(SampleController.class).slash("/").withSelfRel());
-        return new ResponseEntity<>(resource, HttpStatus.OK);
+        return new ResponseEntity<>(dogAssembler.toResources(list), HttpStatus.OK);
     }
 }
