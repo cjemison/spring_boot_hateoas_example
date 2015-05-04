@@ -28,9 +28,4 @@ public class SampleController {
         resource.add(linkTo(SampleController.class).slash("/").withSelfRel());
         return new ResponseEntity<>(resource, HttpStatus.OK);
     }
-
-
-    private Resource<List<String>> toResource(final List<String> stringList) {
-        return new Resource<>(stringList, linkTo(SampleController.class).slash("/").withSelfRel());
-    }
 }
