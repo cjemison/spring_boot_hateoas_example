@@ -10,17 +10,17 @@ public class Dog {
     @Basic(optional = false)
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id = null;
+    private Long id = null;
 
     @Basic(optional = false)
     @Column(name = "name")
     private String name = "";
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

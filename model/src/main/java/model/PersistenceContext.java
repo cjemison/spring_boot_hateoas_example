@@ -37,7 +37,6 @@ public class PersistenceContext {
         dataSourceConfig.setJdbcUrl(env.getRequiredProperty("db.url"));
         dataSourceConfig.setUsername(env.getRequiredProperty("db.username"));
         dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
-
         return new HikariDataSource(dataSourceConfig);
     }
 
