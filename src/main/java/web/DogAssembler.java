@@ -34,7 +34,7 @@ public class DogAssembler extends ResourceAssemblerSupport<Dog, Resource> {
     @Override
     public Resource toResource(final Dog entity) {
         Resource<Dog> resource = new Resource<>(entity);
-        resource.add(linkTo(SampleController.class).slash("dog").slash(entity.getId().toString()).withSelfRel());
+        resource.add(linkTo(SampleController.class).slash(entity.getId().toString()).withSelfRel());
         return resource;
     }
 }
