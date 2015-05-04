@@ -1,17 +1,14 @@
 package web;
 
-import java.util.List;
-
-
 public class Wrapper {
 
-    private List<String> content = null;
+    private Iterable<?> content = null;
 
-    public Wrapper(List<String> content) {
+    public Wrapper(Iterable<?> content) {
         this.content = content;
     }
 
-    public List<String> getContent() {
+    public Iterable<?> getContent() {
         return content;
     }
 }

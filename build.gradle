@@ -24,16 +24,18 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.hateoas:spring-hateoas")
-    compile('org.springframework.data:spring-data-jpa:1.8.0.RELEASE')
-    compile(":model")
-
+    compile('org.springframework.boot:spring-boot-starter-web:1.2.3.RELEASE')
+    compile('org.springframework.hateoas:spring-hateoas:0.17.0.RELEASE')
+    compile project(":model")
     testCompile("junit:junit")
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.12'
+}
+
+springBoot {
+    mainClass = 'web.Application'
 }
 
 sourceCompatibility = 1.7
