@@ -10,6 +10,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,8 @@ public class SampleController {
     @Autowired
     private DogRepository dogRepository;
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", produces = {"application/json"})
+    @Transactional
     public HttpEntity<?> index() {
 
         List<Dog> list = new ArrayList<Dog>();

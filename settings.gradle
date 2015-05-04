@@ -2,3 +2,5 @@ rootProject.name = 'hateoas_example'
 
 include 'model'
 
+include 'service'
+
