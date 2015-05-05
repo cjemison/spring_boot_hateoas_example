@@ -1,14 +1,17 @@
 package persistence.assembler;
 
-import model.entities.DogEO;
 import org.springframework.stereotype.Component;
+
+import model.entities.DogEO;
 import persistence.datatype.DogBO;
 
 @Component
-public class DogAssemblerImpl extends Assembler<DogEO, DogBO> implements DogAssembler {
+public class DogAssemblerImpl extends AbstractAssembler<DogEO, DogBO> implements DogAssembler {
     @Override
     public DogBO toBusinessObject(DogEO dogEO) {
-        return new DogBO.Builder().setId(dogEO.getId()).setName(dogEO.getName()).build();
+        return new DogBO.Builder()
+                .setId(dogEO.getId())
+                .setName(dogEO.getName()).build();
     }
 
     @Override

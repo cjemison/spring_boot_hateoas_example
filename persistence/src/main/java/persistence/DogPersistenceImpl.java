@@ -1,13 +1,15 @@
 package persistence;
 
-import model.dao.DogRepository;
-import model.entities.DogEO;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.google.common.collect.Lists;
+import model.dao.DogRepository;
+import model.entities.DogEO;
 import persistence.assembler.DogAssembler;
 import persistence.datatype.DogBO;
-
-import java.util.List;
 
 @Component
 public class DogPersistenceImpl implements DogPersistence {
@@ -19,13 +21,12 @@ public class DogPersistenceImpl implements DogPersistence {
     @Override
     public DogBO save(DogBO dogBO) {
         DogEO dogEO = dogRepository.save(dogAssembler.toEntity(dogBO));
-        return dogAssembler.toViewObject(dogEO);
+        return dogAssembler.toBusinessObject(dogEO);
     }
 
     @Override
     public List<DogBO> findAll() {
-
         Iterable<DogEO> list = dogRepository.findAll();
-        return null;
+        return Lists.newArrayList(dogAssembler.toBusinessList(list));
     }
 }
