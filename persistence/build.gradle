@@ -8,8 +8,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework:spring-context:4.1.6.RELEASE'
+    compile project(':model')
     compile 'com.google.guava:guava:18.0'
-    compile project(":persistence")
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

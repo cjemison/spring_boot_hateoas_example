@@ -1,4 +1,4 @@
-package service.datatype;
+package persistence.datatype;
 
 
 public class DogBO {

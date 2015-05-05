@@ -1,4 +1,5 @@
-package service.assembler;
+package persistence.assembler;
+
 
 public interface DogAssembler {
 }
