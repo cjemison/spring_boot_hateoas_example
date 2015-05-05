@@ -57,6 +57,7 @@ public class SampleController {
     @RequestMapping(value = "/{dogId}", produces = {"application/json"})
     public HttpEntity<?> get(@PathVariable Long dogId) {
         DogBO dogBO = dogService.findById(dogId);
+        LOGGER.debug("Entity: {}", dogBO);
         DogVO dogVO = new DogVO.Builder().setId(dogBO.getId()).setName(dogBO.getName()).build();
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Location", "http://localhost:8080/" + dogVO.getId());
