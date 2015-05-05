@@ -9,23 +9,22 @@ import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
-import model.entities.DogEO;
-import persistence.datatype.DogBO;
 import web.controller.SampleController;
+import web.datatype.DogVO;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Component
-public class DogAssembler extends ResourceAssemblerSupport<DogBO, Resource> {
+public class DogAssembler extends ResourceAssemblerSupport<DogVO, Resource> {
 
     public DogAssembler() {
-        super(DogEO.class, Resource.class);
+        super(DogVO.class, Resource.class);
     }
 
-    public List<Resource> toResources(List<DogBO> dogEOList) {
+    public List<Resource> toResources(List<DogVO> dogEOList) {
         List<Resource> list = new ArrayList<>();
         if (!CollectionUtils.isEmpty(dogEOList)) {
-            for (DogBO dogEO : dogEOList) {
+            for (DogVO dogEO : dogEOList) {
                 list.add(toResource(dogEO));
             }
         }
@@ -34,8 +33,8 @@ public class DogAssembler extends ResourceAssemblerSupport<DogBO, Resource> {
 
 
     @Override
-    public Resource toResource(final DogBO entity) {
-        Resource<DogBO> resource = new Resource<>(entity);
+    public Resource toResource(final DogVO entity) {
+        Resource<DogVO> resource = new Resource<>(entity);
         resource.add(linkTo(SampleController.class).slash(entity.getId().toString()).withSelfRel());
         return resource;
     }
