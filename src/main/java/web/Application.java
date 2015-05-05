@@ -5,16 +5,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 
 import model.config.ModelConfig;
 import persistence.config.PersistenceConfig;
 import service.config.ServiceConfig;
 
 @Configuration
+@PropertySource("classpath:swagger.properties")
 @EnableCaching
 @EnableAutoConfiguration
 @Import({ModelConfig.class, PersistenceConfig.class, ServiceConfig.class})

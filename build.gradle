@@ -2,25 +2,31 @@ buildscript {
     repositories {
         maven { url "http://repo.spring.io/libs-snapshot" }
         mavenLocal()
+        maven { url "http://nexus.qmino.com/content/repositories/miredot" }
+        maven { url "http://nexus.qmino.com/content/repositories/miredot-snapshots" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.1.RELEASE")
+        classpath('com.qmino:miredot-plugin:1.6.0')
     }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'miredot'
+
 
 jar {
     baseName = 'getting-started'
     version =  '0.1.0'
-}
-
-repositories {
-    mavenCentral()
-    maven { url "http://repo.spring.io/libs-snapshot" }
 }
 
 dependencies {
@@ -32,11 +38,23 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.2'
 }
 
 springBoot {
     mainClass = 'web.Application'
+}
+
+miredot {
+    source = sourceSets.main.allJava
+    destination = sourceSets.main.output
+    licence = 'UHJvamVjdHxjb20uY2plbWlzb24uZXhhbXBsZV93ZWJzZXJ2aWNlfDIwMTYtMDUtMDV8dHJ1ZSNNQ3dDRkJ4bEh1RW02V0xOR2hldE5Ybmt3L1AycmVmT0FoUWN4TTFULzErL1ZjRnh0dHA0M1UyblJaNTd6QT09'
+    // enable for spring mvc support
+    restModel {
+        restFramework {
+            name = 'spring-mvc'
+        }
+    }
 }
 
 sourceCompatibility = 1.7
