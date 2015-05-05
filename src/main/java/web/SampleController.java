@@ -1,10 +1,7 @@
 package web;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-
+import model.dao.DogRepository;
+import model.entities.DogEO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -14,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.dao.DogRepository;
-import model.entities.Dog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 
 @RestController
@@ -29,11 +28,11 @@ public class SampleController {
     @Transactional
     public HttpEntity<?> index() {
 
-        List<Dog> list = new ArrayList<Dog>();
+        List<DogEO> list = new ArrayList<DogEO>();
 
         int cnt = Math.abs(new Random().nextInt() % 25);
         for (int i = 0; i < cnt; i++) {
-            Dog d = new Dog();
+            DogEO d = new DogEO();
             d.setName(UUID.randomUUID().toString());
             list.add(d);
         }

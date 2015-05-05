@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "dog_tbl")
-public class Dog {
+public class DogEO {
     @Id
     @Basic(optional = false)
     @Column(name = "id")
@@ -36,12 +36,12 @@ public class Dog {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Dog)) return false;
+        if (!(o instanceof DogEO)) return false;
 
-        Dog dog = (Dog) o;
+        DogEO dogEO = (DogEO) o;
 
-        if (id != null ? !id.equals(dog.id) : dog.id != null) return false;
-        return !(name != null ? !name.equals(dog.name) : dog.name != null);
+        if (id != null ? !id.equals(dogEO.id) : dogEO.id != null) return false;
+        return !(name != null ? !name.equals(dogEO.name) : dogEO.name != null);
 
     }
 
@@ -54,7 +54,7 @@ public class Dog {
 
     @Override
     public String toString() {
-        return "Dog{" +
+        return "DogEO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';

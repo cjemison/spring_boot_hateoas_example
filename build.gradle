@@ -26,7 +26,7 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web:1.2.3.RELEASE')
     compile('org.springframework.hateoas:spring-hateoas:0.17.0.RELEASE')
-    compile project(":model")
+    compile project(":service")
     testCompile("junit:junit")
 }
 
