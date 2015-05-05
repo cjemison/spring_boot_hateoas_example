@@ -6,11 +6,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import model.PersistenceContext;
+import model.config.ModelConfig;
+import persistence.config.PersistenceConfig;
+import service.config.ServiceConfig;
 
 @Configuration
 @EnableAutoConfiguration
-@Import({PersistenceContext.class})
+@Import({ModelConfig.class, PersistenceConfig.class, ServiceConfig.class})
 @ComponentScan
 public class Application {
 

@@ -30,6 +30,14 @@ public class DogBO {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "DogBO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                "}\\n";
+    }
+
     public static class Builder {
         private Long id = null;
         private String name = null;

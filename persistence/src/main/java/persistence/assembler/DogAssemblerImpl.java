@@ -19,6 +19,6 @@ public class DogAssemblerImpl extends AbstractAssembler<DogEO, DogBO> implements
         DogEO dogEO = new DogEO();
         dogEO.setId(dogBO.getId());
         dogEO.setName(dogBO.getName());
-        return null;
+        return dogEO;
     }
 }

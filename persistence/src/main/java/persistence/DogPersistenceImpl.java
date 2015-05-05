@@ -2,6 +2,8 @@ package persistence;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,7 @@ import persistence.datatype.DogBO;
 
 @Component
 public class DogPersistenceImpl implements DogPersistence {
+    private final static Logger LOGGER = LoggerFactory.getLogger(DogPersistenceImpl.class);
     @Autowired
     private DogAssembler dogAssembler;
     @Autowired
@@ -28,5 +31,18 @@ public class DogPersistenceImpl implements DogPersistence {
     public List<DogBO> findAll() {
         Iterable<DogEO> list = dogRepository.findAll();
         return Lists.newArrayList(dogAssembler.toBusinessList(list));
+    }
+
+    @Override
+    public Iterable<DogBO> save(List<DogBO> list) {
+        LOGGER.info("List: {}", list);
+        Iterable<DogEO> dogEOList = dogAssembler.toEntityList(list);
+        LOGGER.info("Response: {}", dogEOList);
+        return dogAssembler.toBusinessList(dogRepository.save(dogEOList));
+    }
+
+    @Override
+    public DogBO findById(final Long id) {
+        return dogAssembler.toBusinessObject(dogRepository.findOne(id));
     }
 }

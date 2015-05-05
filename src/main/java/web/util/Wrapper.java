@@ -1,4 +1,4 @@
-package web;
+package web.util;
 
 public class Wrapper {
 

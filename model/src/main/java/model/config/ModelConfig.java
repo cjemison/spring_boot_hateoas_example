@@ -1,4 +1,4 @@
-package model;
+package model.config;
 
 import java.util.Properties;
 
@@ -25,7 +25,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories(basePackages = {"model.dao", "models.entities"})
-public class PersistenceContext {
+public class ModelConfig {
     @Resource
     private Environment env;
 
