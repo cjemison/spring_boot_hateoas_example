@@ -35,9 +35,9 @@ public class DogPersistenceImpl implements DogPersistence {
 
     @Override
     public Iterable<DogBO> save(List<DogBO> list) {
-        LOGGER.info("List: {}", list);
+        LOGGER.debug("List: {}", list);
         Iterable<DogEO> dogEOList = dogAssembler.toEntityList(list);
-        LOGGER.info("Response: {}", dogEOList);
+        LOGGER.debug("Response: {}", dogEOList);
         return dogAssembler.toBusinessList(dogRepository.save(dogEOList));
     }
 

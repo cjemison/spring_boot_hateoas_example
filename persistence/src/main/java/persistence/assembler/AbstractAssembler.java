@@ -20,7 +20,7 @@ public abstract class AbstractAssembler<T, U> implements Assembler<T, U> {
     public Iterable<T> toEntityList(Iterable<U> entityList) {
         List<T> list = new ArrayList<>();
         if (!CollectionUtils.isEmpty(Lists.newArrayList(entityList))) {
-            LOGGER.info("Entity List: {}", entityList);
+            LOGGER.debug("Entity List: {}", entityList);
             for (U u : entityList) {
                 list.add(toEntity(u));
             }
@@ -33,7 +33,7 @@ public abstract class AbstractAssembler<T, U> implements Assembler<T, U> {
     public Iterable<U> toBusinessList(Iterable<T> entityList) {
         List<U> list = new ArrayList<>();
         if (!CollectionUtils.isEmpty(Lists.newArrayList(entityList))) {
-            LOGGER.info("Entity List: {}", entityList);
+            LOGGER.debug("Entity List: {}", entityList);
             for (T t : entityList) {
                 list.add(toBusinessObject(t));
             }

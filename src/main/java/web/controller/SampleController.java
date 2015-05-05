@@ -35,7 +35,7 @@ public class SampleController {
             DogBO d = new DogBO.Builder().setName(UUID.randomUUID().toString()).build();
             list.add(d);
         }
-        LOGGER.info("BO List: {}", list);
+        LOGGER.debug("BO List: {}", list);
         dogService.save(list);
         return new ResponseEntity<>(dogAssembler.toResources(dogService.findAll()), HttpStatus.OK);
     }
