@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.1.RELEASE")
         classpath('com.qmino:miredot-plugin:1.6.0')
+        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
 
@@ -38,7 +39,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
+    gradleVersion = '2.4'
 }
 
 springBoot {
@@ -59,3 +60,17 @@ miredot {
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
+
+apply plugin: 'docker'
+
+task buildDocker(type: Docker, dependsOn: build) {
+    push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
